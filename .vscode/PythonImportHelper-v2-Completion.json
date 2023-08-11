@@ -1,10 +1,50 @@
 [
     {
-        "label": "admin",
-        "importPath": "django.contrib",
-        "description": "django.contrib",
+        "label": "receiver",
+        "importPath": "django.dispatch",
+        "description": "django.dispatch",
         "isExtraImport": true,
-        "detail": "django.contrib",
+        "detail": "django.dispatch",
+        "documentation": {}
+    },
+    {
+        "label": "pre_save",
+        "importPath": "django.db.models.signals",
+        "description": "django.db.models.signals",
+        "isExtraImport": true,
+        "detail": "django.db.models.signals",
+        "documentation": {}
+    },
+    {
+        "label": "post_save",
+        "importPath": "django.db.models.signals",
+        "description": "django.db.models.signals",
+        "isExtraImport": true,
+        "detail": "django.db.models.signals",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "Agents",
+        "importPath": "agents.models",
+        "description": "agents.models",
+        "isExtraImport": true,
+        "detail": "agents.models",
         "documentation": {}
     },
     {
@@ -29,6 +69,30 @@
         "description": "django.contrib",
         "isExtraImport": true,
         "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
         "documentation": {}
     },
     {
@@ -96,6 +160,22 @@
         "documentation": {}
     },
     {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
+        "documentation": {}
+    },
+    {
         "label": "TestCase",
         "importPath": "django.test",
         "description": "django.test",
@@ -117,6 +197,14 @@
         "description": "django.test",
         "isExtraImport": true,
         "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
         "documentation": {}
     },
     {
@@ -300,6 +388,30 @@
         "documentation": {}
     },
     {
+        "label": "ProtocolTypeRouter",
+        "importPath": "channels.routing",
+        "description": "channels.routing",
+        "isExtraImport": true,
+        "detail": "channels.routing",
+        "documentation": {}
+    },
+    {
+        "label": "AllowedHostsOriginValidator",
+        "importPath": "channels.security.websocket",
+        "description": "channels.security.websocket",
+        "isExtraImport": true,
+        "detail": "channels.security.websocket",
+        "documentation": {}
+    },
+    {
+        "label": "SessionMiddlewareStack",
+        "importPath": "channels.sessions",
+        "description": "channels.sessions",
+        "isExtraImport": true,
+        "detail": "channels.sessions",
+        "documentation": {}
+    },
+    {
         "label": "get_asgi_application",
         "importPath": "django.core.asgi",
         "description": "django.core.asgi",
@@ -357,12 +469,39 @@
         "documentation": {}
     },
     {
-        "label": "ChannelConfig",
+        "label": "create_agent_account",
+        "kind": 2,
+        "importPath": "agents.signals.handlers",
+        "description": "agents.signals.handlers",
+        "peekOfCode": "def create_agent_account(sender,**kwargs):\n    if kwargs['created']:\n        agent = Agents.objects.create(user=settings.AUTH_USER_MODEL)",
+        "detail": "agents.signals.handlers",
+        "documentation": {}
+    },
+    {
+        "label": "@receiver(post_save,sender",
+        "kind": 5,
+        "importPath": "agents.signals.handlers",
+        "description": "agents.signals.handlers",
+        "peekOfCode": "@receiver(post_save,sender = settings.AUTH_USER_MODEL)\ndef create_agent_account(sender,**kwargs):\n    if kwargs['created']:\n        agent = Agents.objects.create(user=settings.AUTH_USER_MODEL)",
+        "detail": "agents.signals.handlers",
+        "documentation": {}
+    },
+    {
+        "label": "AgentsConfig",
         "kind": 6,
-        "importPath": "channel.apps",
-        "description": "channel.apps",
-        "peekOfCode": "class ChannelConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'channel'",
-        "detail": "channel.apps",
+        "importPath": "agents.apps",
+        "description": "agents.apps",
+        "peekOfCode": "class AgentsConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'agents'\n    def ready(self) -> None:\n        import agents.signals.handlers",
+        "detail": "agents.apps",
+        "documentation": {}
+    },
+    {
+        "label": "Agents",
+        "kind": 6,
+        "importPath": "agents.models",
+        "description": "agents.models",
+        "peekOfCode": "class Agents(models.Model):\n    user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)\n    sector = models.CharField(max_length=255,default='customer_support')\n    ratings = models.DecimalField(decimal_places=2,max_digits=3,default=5.00)",
+        "detail": "agents.models",
         "documentation": {}
     },
     {
@@ -411,11 +550,20 @@
         "documentation": {}
     },
     {
+        "label": "django_asgi_app",
+        "kind": 5,
+        "importPath": "djangochannelsapp.asgi",
+        "description": "djangochannelsapp.asgi",
+        "peekOfCode": "django_asgi_app = get_asgi_application()\napplication = ProtocolTypeRouter({\n    \"http\": django_asgi_app,\n    # Just HTTP for now. (We can add other protocols later.)\n})",
+        "detail": "djangochannelsapp.asgi",
+        "documentation": {}
+    },
+    {
         "label": "application",
         "kind": 5,
         "importPath": "djangochannelsapp.asgi",
         "description": "djangochannelsapp.asgi",
-        "peekOfCode": "application = get_asgi_application()",
+        "peekOfCode": "application = ProtocolTypeRouter({\n    \"http\": django_asgi_app,\n    # Just HTTP for now. (We can add other protocols later.)\n})",
         "detail": "djangochannelsapp.asgi",
         "documentation": {}
     },
@@ -433,7 +581,7 @@
         "kind": 5,
         "importPath": "djangochannelsapp.settings",
         "description": "djangochannelsapp.settings",
-        "peekOfCode": "SECRET_KEY = 'django-insecure-cz9wb(svs7nzs3w(%b(l!7hc&ux)#84!g-rim5uthh^e^m1v#v'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = ['127.0.0.1']\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
+        "peekOfCode": "SECRET_KEY = 'django-insecure-cz9wb(svs7nzs3w(%b(l!7hc&ux)#84!g-rim5uthh^e^m1v#v'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = ['127.0.0.1']\n# Application definition\nINSTALLED_APPS = [\n    #asgi integration\n    \"daphne\",\n    #asgi integration\n    'django.contrib.admin',",
         "detail": "djangochannelsapp.settings",
         "documentation": {}
     },
@@ -442,7 +590,7 @@
         "kind": 5,
         "importPath": "djangochannelsapp.settings",
         "description": "djangochannelsapp.settings",
-        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = ['127.0.0.1']\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
+        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = ['127.0.0.1']\n# Application definition\nINSTALLED_APPS = [\n    #asgi integration\n    \"daphne\",\n    #asgi integration\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',",
         "detail": "djangochannelsapp.settings",
         "documentation": {}
     },
@@ -451,7 +599,7 @@
         "kind": 5,
         "importPath": "djangochannelsapp.settings",
         "description": "djangochannelsapp.settings",
-        "peekOfCode": "ALLOWED_HOSTS = ['127.0.0.1']\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    #packages",
+        "peekOfCode": "ALLOWED_HOSTS = ['127.0.0.1']\n# Application definition\nINSTALLED_APPS = [\n    #asgi integration\n    \"daphne\",\n    #asgi integration\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
         "detail": "djangochannelsapp.settings",
         "documentation": {}
     },
@@ -460,7 +608,7 @@
         "kind": 5,
         "importPath": "djangochannelsapp.settings",
         "description": "djangochannelsapp.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    #packages\n    'rest_framework',\n    'djoser',",
+        "peekOfCode": "INSTALLED_APPS = [\n    #asgi integration\n    \"daphne\",\n    #asgi integration\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
         "detail": "djangochannelsapp.settings",
         "documentation": {}
     },
@@ -492,11 +640,11 @@
         "documentation": {}
     },
     {
-        "label": "WSGI_APPLICATION",
+        "label": "ASGI_APPLICATION",
         "kind": 5,
         "importPath": "djangochannelsapp.settings",
         "description": "djangochannelsapp.settings",
-        "peekOfCode": "WSGI_APPLICATION = 'djangochannelsapp.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/4.2/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.mysql',\n        'NAME': 'customer_support',\n        'HOST':'localhost',\n        'USER':'root',\n        'PORT':'3306',",
+        "peekOfCode": "ASGI_APPLICATION = 'djangochannelsapp.asgi.application'\n# Database\n# https://docs.djangoproject.com/en/4.2/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.mysql',\n        'NAME': 'customer_support',\n        'HOST':'localhost',\n        'USER':'root',\n        'PORT':'3306',",
         "detail": "djangochannelsapp.settings",
         "documentation": {}
     },
@@ -651,6 +799,15 @@
         "description": "djangochannelsapp.wsgi",
         "peekOfCode": "application = get_wsgi_application()",
         "detail": "djangochannelsapp.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "MyappConfig",
+        "kind": 6,
+        "importPath": "myapp.apps",
+        "description": "myapp.apps",
+        "peekOfCode": "class MyappConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'myapp'",
+        "detail": "myapp.apps",
         "documentation": {}
     },
     {

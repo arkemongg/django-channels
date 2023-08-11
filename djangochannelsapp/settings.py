@@ -34,6 +34,9 @@ ALLOWED_HOSTS = ['127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    #asgi integration
+    "daphne",
+    #asgi integration
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,11 +47,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
      #myapps
-    'channel',
     'core',
+    'myapp',
+    'agents',
     'playgrounds',
-    
-
 ]
 
 MIDDLEWARE = [
@@ -79,7 +81,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'djangochannelsapp.wsgi.application'
+# WSGI_APPLICATION = 'djangochannelsapp.wsgi.application'
+ASGI_APPLICATION = 'djangochannelsapp.asgi.application'
 
 
 # Database
